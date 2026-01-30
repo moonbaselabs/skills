@@ -27,6 +27,10 @@ Prioritize robust, maintainable UI patterns over complex JavaScript solutions. P
 - **DO** use `<x-form>` to generate form markup with CSRF token
 - Simple, predictable behavior that's easy to maintain and debug
 
+## Form Inputs
+
+- **DO** use `<x-radio.group>` instead of `<x-select>` when there are 5 or fewer options
+
 ## Progressive Enhancement with Alpine AJAX
 
 When a more dynamic UI is warranted:
