@@ -51,6 +51,12 @@ When a more dynamic UI is warranted:
 </x-form>
 ```
 
+## Destructive Actions
+
+- **DO** use muted styling (e.g., gray, subtle) for destructive actions when they appear alongside other actions
+- **DO** use red/danger styling only when the destructive action stands alone
+- **DO** require confirmation via `confirm()` dialog, or make the action easily reversible (e.g., soft delete with undo)
+
 ## Avoid JSON APIs for UI
 
 - **DO NOT** use JSON responses for UI interactions - treat as anti-pattern
