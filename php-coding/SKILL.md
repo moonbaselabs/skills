@@ -117,7 +117,6 @@ Code should be self-documenting. Comments often become outdated and misleading.
 - **DO NOT** add comments that describe what the code does
 - **DO** use descriptive variable/function names instead
 - **ONLY** add comments to explain WHY something non-obvious is done
-- **NEVER** add comments to tests (test names should be descriptive)
 
 ```php
 // BAD: Comment describes what code does

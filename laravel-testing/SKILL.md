@@ -13,6 +13,7 @@ description: Laravel testing standards and patterns. Use when writing PHPUnit te
 
 - **DO** prefix test names with `test_`
 - **DO** use descriptive test method names
+- **NEVER** add comments to tests (test names should be descriptive)
 
 ## Test Strategy
 
