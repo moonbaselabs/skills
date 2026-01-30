@@ -20,6 +20,16 @@ description: Laravel Blade templates and UI patterns. Use when writing Blade vie
 
 Prioritize robust, maintainable UI patterns over complex JavaScript solutions. Prefer existing components over creating new ones.
 
+## Icons
+
+- **DO** use `blade-ui-kit/blade-icons` components for all SVG icons
+- **Naming**: `<x-{library}-{icon-name}>` - prefix with icon library name, then icon name
+
+```blade
+<x-phosphor-user />
+<x-heroicon-o-arrow-right />
+```
+
 ## Default: Standard HTML Forms
 
 - **DO** use standard HTML form submissions with full page refreshes by default
