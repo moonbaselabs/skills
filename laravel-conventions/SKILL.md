@@ -1,6 +1,6 @@
 ---
 name: laravel-conventions
-description: Core Laravel conventions and patterns. Use when creating routes, controllers, config files, artisan commands, policies, translations, or organizing services. Covers Laravel's documented way, facades, mass assignment, route naming, controller CRUD methods, configuration structure, command output patterns, authorization policies, the __() function, and service directory organization.
+description: Core Laravel conventions and patterns. Use when creating routes, controllers, config files, artisan commands, policies, translations, or organizing services. Covers Laravel's documented way, facades, mass assignment, route naming, thin controllers with fat models, controller CRUD methods, configuration structure, command output patterns, authorization policies, the __() function, and service directory organization.
 ---
 
 # Laravel Conventions
@@ -41,6 +41,34 @@ Route::get('/user-profile/{userId}', [UserProfileController::class, 'show'])
 - **Naming**: Singular resource name + `Controller` (`PostController`)
 - **Methods**: Stick to CRUD: `index`, `create`, `store`, `show`, `edit`, `update`, `destroy`, `restore`
 - **Non-CRUD actions**: Extract to new controllers (excluding `restore`)
+- **Thin controllers**: Controllers validate input and delegate to models — no business logic
+- **DO NOT** add `protected` or `private` helper methods to controllers
+- **DO** move persistence and domain logic to methods on the relevant model
+
+```php
+// BAD: Helper method on controller
+class PostController extends Controller
+{
+    public function update(PostRequest $request, Post $post)
+    {
+        $this->syncTags($post, $request->validated('tags', []));
+    }
+
+    protected function syncTags(Post $post, array $tags): void
+    {
+        // persistence logic...
+    }
+}
+
+// GOOD: Controller validates, model persists
+class PostController extends Controller
+{
+    public function update(PostRequest $request, Post $post)
+    {
+        $post->syncTags($request->validated('tags', []));
+    }
+}
+```
 
 ## Configuration
 
