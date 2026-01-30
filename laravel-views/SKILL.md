@@ -65,6 +65,37 @@ When a more dynamic UI is warranted:
 </x-form>
 ```
 
+## Partials
+
+- **DO** ensure element `id` attributes are unique when a partial may be rendered multiple times on the same page
+- **DO** pass a unique identifier to the partial and use it to scope IDs (e.g., `id="post_{{ $post->id }}_title"`)
+
+## Shared Form Fields
+
+When create and edit forms share the same fields, extract them into a partial named `_fields.blade.php`:
+
+```blade
+{{-- resources/views/posts/_fields.blade.php --}}
+<x-input label="Title" name="title" :value="old('title', $post->title ?? '')" />
+<x-textarea label="Body" name="body" :value="old('body', $post->body ?? '')" />
+```
+
+```blade
+{{-- resources/views/posts/create.blade.php --}}
+<x-form method="post" action="{{ route('posts.store') }}">
+    @include('posts._fields')
+    <button>Create Post</button>
+</x-form>
+```
+
+```blade
+{{-- resources/views/posts/edit.blade.php --}}
+<x-form method="put" action="{{ route('posts.update', $post) }}">
+    @include('posts._fields', ['post' => $post])
+    <button>Update Post</button>
+</x-form>
+```
+
 ## Destructive Actions
 
 - **DO** use muted styling (e.g., gray, subtle) for destructive actions when they appear alongside other actions
