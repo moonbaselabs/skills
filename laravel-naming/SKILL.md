@@ -12,7 +12,7 @@ description: Quick reference for Laravel naming conventions. ACTIVATE when writi
 | Classes | PascalCase | `UserController`, `OrderStatus` |
 | Methods/Variables | camelCase | `getUserName`, `$firstName` |
 | Route URLs | kebab-case | `/open-source`, `/user-profile` |
-| Route names | snake_case | `open_source`, `user_profile.show` |
+| Route names | camelCase | `openSource`, `userProfile.show` |
 | Route parameters | camelCase | `{userId}`, `{orderId}` |
 | Config files | kebab-case | `pdf-generator.php` |
 | Config keys | snake_case | `chrome_path` |
