@@ -1,6 +1,6 @@
 ---
 name: php-coding
-description: PHP coding standards and best practices. Use when writing PHP code, defining types, creating docblocks, or structuring control flow. Covers PSR-1/2/12 standards, type declarations, nullable syntax, docblock rules, happy path patterns, early returns, string formatting, enums, comments, and whitespace.
+description: PHP coding standards and best practices. ACTIVATE when writing or modifying any PHP code. For Laravel projects, also activate the `laravel-conventions` and `laravel-naming` skills. Covers PSR-1/2/12 standards, type declarations, nullable syntax, docblock rules, happy path patterns, early returns, string formatting, enums, comments, and whitespace.
 ---
 
 # PHP Coding Standards

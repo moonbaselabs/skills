@@ -1,6 +1,6 @@
 ---
 name: laravel-conventions
-description: Core Laravel conventions and patterns. Use when creating routes, controllers, config files, artisan commands, policies, translations, or organizing services. Covers Laravel's documented way, facades, mass assignment, route naming, thin controllers with fat models, controller CRUD methods, configuration structure, command output patterns, authorization policies, the __() function, and service directory organization.
+description: Core Laravel conventions and patterns. ACTIVATE when writing or modifying any PHP code in a Laravel project. Covers Laravel's documented way, facades, mass assignment, route naming, thin controllers with fat models, controller CRUD methods, configuration structure, command output patterns, authorization policies, the __() function, and service directory organization.
 ---
 
 # Laravel Conventions

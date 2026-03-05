@@ -1,6 +1,6 @@
 ---
 name: laravel-naming
-description: Quick reference for Laravel naming conventions. Use when naming classes, files, routes, database tables, or unsure about casing (PascalCase, camelCase, snake_case, kebab-case). Lookup table for controllers, models, views, jobs, events, listeners, commands, mailables, resources, enums, and foreign keys.
+description: Quick reference for Laravel naming conventions. ACTIVATE when writing or modifying any PHP code in a Laravel project. Lookup table for casing conventions (PascalCase, camelCase, snake_case, kebab-case) across controllers, models, views, jobs, events, listeners, commands, mailables, resources, enums, routes, database tables, and foreign keys.
 ---
 
 # Laravel Naming Quick Reference
