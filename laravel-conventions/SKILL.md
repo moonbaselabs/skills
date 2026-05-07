@@ -30,10 +30,21 @@ description: Core Laravel conventions and patterns. ACTIVATE when writing or mod
 **Naming conventions**: See `laravel-naming` skill for URL, route name, and parameter casing.
 
 - **Controller binding**: Use array tuple syntax `[Controller::class, 'method']`
+- **DO** declare each route individually, one line per controller method
+- **DO NOT** use `Route::resource()` or `Route::apiResource()`. Explicit declarations make routes greppable, keep URL/name/method visible at the call site, and avoid implicit conventions that obscure what is actually registered.
 
 ```php
-Route::get('/user-profile/{userId}', [UserProfileController::class, 'show'])
-    ->name('user_profile.show');
+// GOOD: explicit, greppable, obvious
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+// BAD: hides which routes/names/methods exist
+Route::resource('posts', PostController::class);
 ```
 
 ## Controllers
