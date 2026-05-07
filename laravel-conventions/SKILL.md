@@ -1,6 +1,6 @@
 ---
 name: laravel-conventions
-description: Core Laravel conventions and patterns. ACTIVATE when writing or modifying any PHP code in a Laravel project. Covers Laravel's documented way, facades, mass assignment, route naming, thin controllers with fat models, controller CRUD methods, configuration structure, command output patterns, authorization policies, the __() function, and service directory organization.
+description: Core Laravel conventions and patterns. ACTIVATE when writing or modifying any PHP code in a Laravel project. Covers Laravel's documented way, facades, mass assignment, route naming, thin controllers with fat models, controller CRUD methods, model lifecycle hooks, configuration structure, command output patterns, authorization policies, translation functions, and service directory organization.
 ---
 
 # Laravel Conventions
@@ -69,6 +69,30 @@ class PostController extends Controller
     }
 }
 ```
+
+## Model Lifecycle Hooks
+
+- **DO** put small, model-internal derived state in the model's `booted()` method using `static::creating`, `static::saving`, `static::saved`, etc.
+- **DO NOT** create a separate Observer class for one-off computations like setting a derived column or recomputing a related model's status. A separate file in `app/Observers/` plus a registration line in a service provider is overkill for logic that fits in five lines.
+- **WHEN to reach for a separate Observer class**: the hooks are long, span many events, are reused across multiple models, or pull in dependencies that don't belong in the model file.
+
+```php
+// GOOD: derived state collocated with the model
+class TachReading extends Model
+{
+    protected static function booted(): void
+    {
+        static::creating(function (TachReading $reading) {
+            $reading->delta_hours = $reading->computeDelta();
+        });
+    }
+}
+
+// AVOID for small logic: a separate file, registered elsewhere, that you have to chase to find
+class TachReadingObserver
+{
+    public function creating(TachReading $reading): void { /* ... */ }
+}
 
 ## Configuration
 
